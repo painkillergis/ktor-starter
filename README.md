@@ -6,7 +6,7 @@ Ejecting renames packages, artifacts, services, deployments, and the project nam
 ## Run the tests
 `./gradlew cleanTest test`
 ### Against a deployment
-`ktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter ./gradlew cleanTest test`
+`./gradlew cleanTest test -Dktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter`
 ## Build, deploy, verify
 `scripts/cd`
 The cd script executes these steps:

@@ -10,7 +10,7 @@ internal object StartApplication : BeforeAllCallback, ExtensionContext.Store.Clo
   var server: NettyApplicationEngine? = null
 
   override fun beforeAll(context: ExtensionContext?) {
-    if (System.getenv("ktor_starter_baseUrl") != null || server != null) return
+    if (System.getProperty("ktor_starter_baseUrl") != null || server != null) return
     server = embeddedServer(
       Netty,
       applicationEngineEnvironment {

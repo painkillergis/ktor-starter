@@ -23,7 +23,7 @@ internal object TestHttpClientProvider : BeforeEachCallback, ExtensionContext.St
   )
 
   private fun setBaseUrl(builder: HttpRequestBuilder, name: String, default: String) {
-    val baseUrl = System.getenv(name) ?: default
+    val baseUrl = System.getProperty(name) ?: default
     val (protocolString, hostname, basePath) = Regex("(?<protocol>\\w+)://(?<hostname>[\\w.-]+(:\\d+)?)(?<basePath>.*)")
       .matchEntire(baseUrl)
       ?.groupValues
