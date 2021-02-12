@@ -1,3 +1,7 @@
 #!/bin/sh
 ktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter-dark ./gradlew \
-  clean shadowJar docker dockerPush darkDeploy cleanTest test switchDeployments
+  clean shadowJar docker dockerPush darkDeploy test switchDeployments \
+  -DstepperHost=painkiller.arctair.com \
+  -DstepperBasePath=stepper \
+  -DtargetHost=painkiller.arctair.com \
+  -DtargetBasePath=ktor-starter
