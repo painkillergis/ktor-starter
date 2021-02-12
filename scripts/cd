@@ -4,5 +4,5 @@
   -DstepperHost=painkiller.arctair.com \
   -DstepperBasePath=stepper \
   -DtargetHost=painkiller.arctair.com \
-  -DtargetBasePath=ktor-starter \
+  -DtargetBasePath=ktor-starter-dark \
   -Dktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter-dark
