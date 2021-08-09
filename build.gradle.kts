@@ -28,6 +28,7 @@ dependencies {
   implementation("io.ktor:ktor-server-netty:+")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:+")
   testImplementation("io.kotest:kotest-assertions-core:+")
+  testImplementation("io.kotest:kotest-runner-junit5:+")
   testImplementation("io.ktor:ktor-server-tests:+")
   testImplementation("org.jetbrains.kotlin:kotlin-test:+")
 }
@@ -70,4 +71,8 @@ tasks.processResources {
   doLast {
     File("$buildDir/resources/main/version").writeText(version.toString())
   }
+}
+
+tasks.test {
+  useJUnitPlatform()
 }
