@@ -30,6 +30,7 @@ dependencies {
   testImplementation("io.kotest:kotest-assertions-core:+")
   testImplementation("io.kotest:kotest-runner-junit5:+")
   testImplementation("io.ktor:ktor-server-tests:+")
+  testImplementation("io.mockk:mockk:+")
   testImplementation("org.jetbrains.kotlin:kotlin-test:+")
 }
 

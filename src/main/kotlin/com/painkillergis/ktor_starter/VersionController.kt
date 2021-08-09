@@ -4,12 +4,12 @@ import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Application.versionController() {
+fun Application.versionController(versionService: VersionService) {
   routing {
     get("/version") {
       call.respond(
         mapOf(
-          "version" to javaClass.classLoader.getResource("version")!!.readText(),
+          "version" to versionService.get()
         )
       )
     }

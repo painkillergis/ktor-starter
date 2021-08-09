@@ -13,7 +13,9 @@ fun Application.globalModules() {
 }
 
 fun Application.controllers() {
-  versionController()
+  versionController(
+    VersionService(),
+  )
 }
 
 fun main() {
