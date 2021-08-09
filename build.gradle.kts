@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 val ktorVersion: String by project
 val kotlinVersion: String by project
 val logbackVersion: String by project
@@ -5,6 +7,7 @@ val logbackVersion: String by project
 plugins {
   application
   kotlin("jvm") version "1.5.21"
+  id("com.github.johnrengelman.shadow") version "7.0.0"
   id("org.jetbrains.kotlin.plugin.serialization") version "1.5.21"
 }
 
@@ -25,4 +28,14 @@ dependencies {
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
   testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
   testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+}
+
+tasks.jar {
+  enabled = false
+}
+
+tasks.withType<ShadowJar> {
+  archiveBaseName.set("ktor-starter")
+  archiveClassifier.set("")
+  archiveVersion.set("")
 }
