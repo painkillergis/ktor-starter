@@ -1,0 +1,2 @@
+scp build/libs/ktor-starter.jar yagni:ktor-starter/application.jar
+ssh yagni -- systemctl restart ktor-starter --user
