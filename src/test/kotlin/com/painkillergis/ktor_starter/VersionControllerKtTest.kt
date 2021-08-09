@@ -11,7 +11,10 @@ import kotlin.test.Test
 class VersionControllerKtTest {
   @Test
   fun testVersion() {
-    withTestApplication({ versionController() }) {
+    withTestApplication({
+      globalModules()
+      versionController()
+    }) {
       handleRequest(HttpMethod.Get, "/version").apply {
         response.status() shouldBe HttpStatusCode.OK
         Json.decodeFromString<Map<String, String>>(response.content!!)["version"] shouldMatch Regex("\\d+")
