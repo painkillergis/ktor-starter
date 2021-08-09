@@ -22,14 +22,38 @@ repositories {
 }
 
 dependencies {
-  implementation("ch.qos.logback:logback-classic:1.2.3")
-  implementation("io.ktor:ktor-serialization:1.6.2")
-  implementation("io.ktor:ktor-server-core:1.6.2")
-  implementation("io.ktor:ktor-server-netty:1.6.2")
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
-  testImplementation("io.kotest:kotest-assertions-core:4.6.1")
-  testImplementation("io.ktor:ktor-server-tests:1.6.2")
-  testImplementation("org.jetbrains.kotlin:kotlin-test:1.5.21")
+  implementation("ch.qos.logback:logback-classic:+")
+  implementation("io.ktor:ktor-serialization:+")
+  implementation("io.ktor:ktor-server-core:+")
+  implementation("io.ktor:ktor-server-netty:+")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:+")
+  testImplementation("io.kotest:kotest-assertions-core:+")
+  testImplementation("io.ktor:ktor-server-tests:+")
+  testImplementation("org.jetbrains.kotlin:kotlin-test:+")
+}
+
+configurations.all {
+  resolutionStrategy {
+    activateDependencyLocking()
+    componentSelection
+      .all(object : Action<ComponentSelection> {
+        @Mutate
+        override fun execute(selection: ComponentSelection) {
+          val version = selection.candidate.version
+          when {
+            version.matches(
+              Regex(
+                ".*[-.]rc\\d*$",
+                RegexOption.IGNORE_CASE
+              )
+            ) -> selection.reject("Release candidates are excluded")
+            version.matches(Regex(".*-M\\d+$")) -> selection.reject("Milestones are excluded")
+            version.matches(Regex(".*-alpha\\d+$")) -> selection.reject("Alphas are excluded")
+            version.matches(Regex(".*-beta\\d+$")) -> selection.reject("Betas are excluded")
+          }
+        }
+      })
+  }
 }
 
 tasks.jar {
