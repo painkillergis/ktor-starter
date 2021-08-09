@@ -5,6 +5,9 @@ find . ! -path './.git/*' ! -path './build/*' -type f | xargs sed -i "s/ktor-sta
 find . ! -path './.git/*' ! -path './build/*' -type f | xargs sed -i "s/ktor_starter/$nameSafe/g"
 find . -depth -type d -name ktor_starter -execdir mv {} $nameSafe \;
 rm eject
-git remote rm origin
 git add --all
 git commit -m "ejected from ktor-starter"
+
+if [[ `git remote get-url origin` == "git@github.com:painkillergis/ktor-starter.git" ]] ; then
+  git remote rm origin
+fi
