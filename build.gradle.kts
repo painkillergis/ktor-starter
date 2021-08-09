@@ -6,13 +6,17 @@ val logbackVersion: String by project
 
 plugins {
   application
-  kotlin("jvm") version "1.5.21"
   id("com.github.johnrengelman.shadow") version "7.0.0"
-  id("org.jetbrains.kotlin.plugin.serialization") version "1.5.21"
+  kotlin("jvm") version "1.5.21"
+  kotlin("plugin.serialization") version "1.5.21"
 }
 
 group = "com.painkillergis"
-version = "0.0.1"
+version = ProcessBuilder("sh", "-c", "git rev-list --count HEAD")
+  .start()
+  .apply {waitFor()}
+  .inputStream.bufferedReader().readText().trim()
+
 application {
   mainClass.set("com.painkillergis.ktor_starter.ApplicationKt")
 }
@@ -22,10 +26,12 @@ repositories {
 }
 
 dependencies {
+  implementation("ch.qos.logback:logback-classic:$logbackVersion")
   implementation("io.ktor:ktor-serialization:$ktorVersion")
   implementation("io.ktor:ktor-server-core:$ktorVersion")
   implementation("io.ktor:ktor-server-netty:$ktorVersion")
-  implementation("ch.qos.logback:logback-classic:$logbackVersion")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+  testImplementation("io.kotest:kotest-assertions-core:4.6.1")
   testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
   testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
 }
