@@ -1,4 +1,4 @@
-package com.painkillergis.ktor_starter
+package com.painkillergis.ktor_starter.version
 
 import com.painkillergis.ktor_starter.util.withConfiguredTestApplication
 import io.kotest.core.spec.style.FunSpec

@@ -1,5 +1,7 @@
 package com.painkillergis.ktor_starter
 
+import com.painkillergis.ktor_starter.version.VersionService
+import com.painkillergis.ktor_starter.version.versionController
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.serialization.*

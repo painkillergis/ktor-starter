@@ -1,5 +1,6 @@
-package com.painkillergis.ktor_starter
+package com.painkillergis.ktor_starter.version
 
+import com.painkillergis.ktor_starter.globalModules
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.ktor.http.*
