@@ -5,13 +5,13 @@ import io.ktor.server.testing.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class SerializationDemoTest {
+class VersionControllerKtTest {
   @Test
-  fun testRoot() {
-    withTestApplication({ configureSerialization() }) {
-      handleRequest(HttpMethod.Get, "/serialization-demo").apply {
+  fun testVersion() {
+    withTestApplication({ versionController() }) {
+      handleRequest(HttpMethod.Get, "/version").apply {
         assertEquals(HttpStatusCode.OK, response.status())
-        assertEquals("""{"hello":"world"}""", response.content)
+        assertEquals("""{"version":"0.0.1"}""", response.content)
       }
     }
   }

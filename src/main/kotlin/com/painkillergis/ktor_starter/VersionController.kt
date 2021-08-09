@@ -6,14 +6,18 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.serialization.*
 
-fun Application.configureSerialization() {
+fun Application.versionController() {
   install(ContentNegotiation) {
     json()
   }
 
   routing {
-    get("/serialization-demo") {
-      call.respond(mapOf("hello" to "world"))
+    get("/version") {
+      call.respond(
+        mapOf(
+          "version" to javaClass.classLoader.getResource("version")!!.readText(),
+        )
+      )
     }
   }
 }

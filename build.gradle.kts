@@ -39,3 +39,9 @@ tasks.withType<ShadowJar> {
   archiveClassifier.set("")
   archiveVersion.set("")
 }
+
+tasks.processResources {
+  doLast {
+    File("$buildDir/resources/main/version").writeText(version.toString())
+  }
+}
