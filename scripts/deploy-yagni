@@ -1,2 +1,6 @@
-scp build/libs/ktor-starter.jar yagni:ktor-starter/application.jar
-ssh yagni -- systemctl restart ktor-starter --user
+cat <<EOF | ssh yagni
+  cd /home/arctair/ktor-starter
+  git pull
+  ./gradlew clean shadowJar
+  systemctl restart ktor-starter --user
+EOF
