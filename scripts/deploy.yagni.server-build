@@ -1,0 +1,5 @@
+#!/bin/zsh -l
+
+cd /home/arctair/ktor-starter
+git pull
+./gradlew clean shadowJar

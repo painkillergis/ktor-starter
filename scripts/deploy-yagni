@@ -1,6 +1,0 @@
-cat <<EOF | ssh yagni
-  cd /home/arctair/ktor-starter
-  git pull
-  ./gradlew clean shadowJar
-  systemctl restart ktor-starter --user
-EOF

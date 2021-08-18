@@ -1,0 +1,5 @@
+rsync -u scripts/ktor-starter.service yagni:.config/systemd/user/ktor-starter.service
+ssh yagni -T < scripts/deploy.yagni.server-init
+ssh yagni -T < scripts/deploy.yagni.server-build
+ssh yagni -T < scripts/deploy.yagni.server-restart
+until curl -s yagni:8080/version; do sleep 1 ; done

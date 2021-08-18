@@ -1,0 +1,5 @@
+#!/bin/zsh -l
+
+if [ ! -d ktor-starter ]; then
+  git clone https://github.com/painkillergis/ktor-starter
+fi
