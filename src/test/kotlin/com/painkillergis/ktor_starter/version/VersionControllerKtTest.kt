@@ -20,7 +20,7 @@ class VersionControllerKtTest : FunSpec({
         versionService,
       )
     }) {
-      every {versionService.get()} returns "the version"
+      every { versionService.get() } returns "the version"
 
       handleRequest(HttpMethod.Get, "/version").apply {
         response.status() shouldBe HttpStatusCode.OK

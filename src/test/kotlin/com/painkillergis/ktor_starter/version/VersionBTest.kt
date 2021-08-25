@@ -1,6 +1,6 @@
 package com.painkillergis.ktor_starter.version
 
-import com.painkillergis.ktor_starter.util.BFunSpec
+import com.painkillergis.ktor_starter.BFunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldMatch
 import io.ktor.client.call.*
