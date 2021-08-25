@@ -4,7 +4,6 @@ plugins {
   application
   id("com.github.johnrengelman.shadow") version "7.0.0"
   kotlin("jvm") version "1.5.21"
-  kotlin("plugin.serialization") version "1.5.21"
 }
 
 group = "com.painkillergis"
@@ -23,18 +22,18 @@ repositories {
 
 dependencies {
   implementation("ch.qos.logback:logback-classic:+")
+  implementation("io.ktor:ktor-jackson:+")
   implementation("io.ktor:ktor-serialization:+")
   implementation("io.ktor:ktor-server-core:+")
   implementation("io.ktor:ktor-server-netty:+")
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:+")
   testImplementation("io.kotest:kotest-assertions-core:+")
   testImplementation("io.kotest:kotest-runner-junit5:+")
-  testImplementation("io.ktor:ktor-client-serialization:+")
+  testImplementation("io.ktor:ktor-client-cio:+")
+  testImplementation("io.ktor:ktor-client-core:+")
+  testImplementation("io.ktor:ktor-client-jackson:+")
   testImplementation("io.ktor:ktor-server-tests:+")
   testImplementation("io.mockk:mockk:+")
   testImplementation("org.jetbrains.kotlin:kotlin-test:+")
-  testImplementation("io.ktor:ktor-client-core:+")
-  testImplementation("io.ktor:ktor-client-cio:+")
 }
 
 configurations.all {

@@ -4,13 +4,14 @@ import com.painkillergis.ktor_starter.version.VersionService
 import com.painkillergis.ktor_starter.version.versionController
 import io.ktor.application.*
 import io.ktor.features.*
+import io.ktor.jackson.*
 import io.ktor.serialization.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
 fun Application.globalModules() {
   install(ContentNegotiation) {
-    json()
+    jackson()
   }
 }
 
