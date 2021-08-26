@@ -26,6 +26,7 @@ dependencies {
   implementation("io.ktor:ktor-serialization:+")
   implementation("io.ktor:ktor-server-core:+")
   implementation("io.ktor:ktor-server-netty:+")
+  testImplementation("com.cruftbusters:ktor-baseurl-util:+")
   testImplementation("io.kotest:kotest-assertions-core:+")
   testImplementation("io.kotest:kotest-runner-junit5:+")
   testImplementation("io.ktor:ktor-client-cio:+")

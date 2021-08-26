@@ -14,6 +14,7 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeout
+import com.cruftbusters.ktor_baseurl_util.setBaseUrl
 
 abstract class BFunSpec(val body: FunSpec.(HttpClient) -> Unit) : FunSpec({
   listeners(ServerStart)
@@ -26,9 +27,7 @@ abstract class BFunSpec(val body: FunSpec.(HttpClient) -> Unit) : FunSpec({
 
     val httpClient = HttpClient {
       defaultRequest {
-        url.protocol = URLProtocol.HTTP
-        url.host = "localhost"
-        url.port = 8080
+        setBaseUrl("http://localhost:8080")
       }
       install(JsonFeature)
     }
