@@ -34,6 +34,16 @@ $ curl -s localhost:8081/version
 {"version":"probably the version but using a different port"}
 ```
 
+### Running the tests
+```sh
+./gradlew clean test
+```
+
+#### Against yagni
+```sh
+./gradlew clean test -DbaseUrl=http://yagni:8080
+```
+
 ## Updating dependencies
 ```sh
 ./gradlew dependencies --write-locks

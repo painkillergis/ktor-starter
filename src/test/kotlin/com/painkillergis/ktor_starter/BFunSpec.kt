@@ -27,7 +27,7 @@ abstract class BFunSpec(val body: FunSpec.(HttpClient) -> Unit) : FunSpec({
 
     val httpClient = HttpClient {
       defaultRequest {
-        setBaseUrl("http://localhost:8080")
+        setBaseUrl(System.getProperty("baseUrl").ifBlank { "http://localhost:8080" })
       }
       install(JsonFeature)
     }

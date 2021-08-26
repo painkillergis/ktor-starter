@@ -79,4 +79,5 @@ tasks.processResources {
 
 tasks.test {
   useJUnitPlatform()
+  systemProperty("baseUrl", System.getProperty("baseUrl"))
 }
