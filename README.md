@@ -21,7 +21,7 @@ A jarfile named `ktor-starter.jar` will be placed in `build/libs`
 
 ### Running a jarfile
 ```sh
-$ java -jar build/libs/fall-color-history.jar
+$ java -jar build/libs/ktor-starter.jar
 $ curl -s localhost:8080/version
 {"version":"probably the version"}
 ```
