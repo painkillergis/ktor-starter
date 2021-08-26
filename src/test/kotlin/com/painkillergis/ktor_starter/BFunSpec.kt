@@ -21,20 +21,24 @@ abstract class BFunSpec(val body: FunSpec.(HttpClient) -> Unit) : FunSpec({
   body(this, httpClient)
 }) {
   companion object {
+    private const val embeddedServerBaseUrl = "http://localhost:8080"
+
+    private val baseUrl = System.getProperty("baseUrl").ifBlank { embeddedServerBaseUrl }
+
     private var started = false
 
     private val server = embeddedServer(Netty, port = 8080) { module() }
 
     val httpClient = HttpClient {
       defaultRequest {
-        setBaseUrl(System.getProperty("baseUrl").ifBlank { "http://localhost:8080" })
+        setBaseUrl(baseUrl)
       }
       install(JsonFeature)
     }
 
     object ServerStart : io.kotest.core.listeners.TestListener {
       override suspend fun beforeTest(testCase: TestCase) {
-        if (started) return
+        if (started || baseUrl != embeddedServerBaseUrl) return
         server.start()
         started = true
         withTimeout(4000) {
