@@ -66,7 +66,7 @@ tasks.jar {
 }
 
 tasks.withType<ShadowJar> {
-  archiveBaseName.set("ktor-starter")
+  archiveBaseName.set(rootProject.name)
   archiveClassifier.set("")
   archiveVersion.set("")
 }
