@@ -1,1 +1,1 @@
-rootProject.name = "com.painkillergis.ktor_starter"
+rootProject.name = "ktor_starter"
