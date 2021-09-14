@@ -17,7 +17,7 @@ import kotlinx.coroutines.withTimeout
 import com.cruftbusters.ktor_baseurl_util.setBaseUrl
 
 abstract class BFunSpec(val body: FunSpec.(HttpClient) -> Unit) : FunSpec({
-  listeners(ServerStart)
+  register(ServerStart)
   body(this, httpClient)
 }) {
   companion object {
