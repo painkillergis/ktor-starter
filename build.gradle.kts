@@ -52,7 +52,7 @@ configurations.all {
                 RegexOption.IGNORE_CASE
               )
             ) -> selection.reject("Release candidates are excluded")
-            version.matches(Regex(".*-M\\d+$")) -> selection.reject("Milestones are excluded")
+            version.matches(Regex(".*[-.]M\\d+$")) -> selection.reject("Milestones are excluded")
             version.matches(Regex(".*-alpha\\d+$")) -> selection.reject("Alphas are excluded")
             version.matches(Regex(".*-beta\\d+$")) -> selection.reject("Betas are excluded")
           }
